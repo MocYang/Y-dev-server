@@ -4,7 +4,7 @@
   "description": "自用的简易开发服务器",
   "main": "index.js",
   "scripts": {
-    "start": "anywhere -d /www -p localhost 8080"
+    "start": "anywhere -d data/www/ -p localhost 8080"
   },
   "repository": {
     "type": "git",
