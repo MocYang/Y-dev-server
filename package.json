@@ -4,7 +4,16 @@
   "description": "自用的简易开发服务器",
   "main": "index.js",
   "scripts": {
-    "start": "anywhere -d data/www/ -p localhost 8080"
+    "start": "anywhere -d data/www/ -p localhost 8080",
+    "cz": "git cz",
+    "lint-staged": "lint-staged",
+    "commitlint": "commitlint --config commitlint.config.js -e -V"
+  },
+  "lint-staged": {
+    "**/*": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "repository": {
     "type": "git",
@@ -18,6 +27,21 @@
   },
   "homepage": "https://github.com/MocYang/Y-dev-server#readme",
   "devDependencies": {
-    "anywhere": "^1.5.0"
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "anywhere": "^1.5.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

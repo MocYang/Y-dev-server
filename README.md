@@ -2,11 +2,16 @@
 自用的简易开发服务器
 
 Anywhere 随启随用的静态文件服务器
-Running static file server anywhere. 随时随地将你的当前目录变成一个静态文件服务器的根目录。
+
+Running static file server anywhere. 随时随地将你的当前目录变
+
+成一个静态文件服务器的根目录。
 
 Installation
+
 Install it as a command line tool via npm -g.
 
+```bash
 npm install anywhere -g
 Execution
 $ anywhere
@@ -33,4 +38,5 @@ Usage:
   anywhere -f /index.html  // Enable html5 history,the index is /index.html
 Visit
 http://localhost:8000
+```
 执行命令后，默认浏览器将为您自动打开主页。
