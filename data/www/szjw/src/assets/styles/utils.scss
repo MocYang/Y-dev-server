@@ -1,0 +1,80 @@
+// 设计稿的实际高度
+$layoutWidth: 1920;  
+
+// 设计稿的实际宽度          
+$layoutHeight: 1080;
+
+/// 单位移除
+/// @param {Number} $number - 需要移除单位的
+/// @return {Number} - 无单位的数字
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function px2vw($px) {
+  $px_number: strip-unit($px);
+  @return $px_number / $layoutWidth * 1vw * 100;
+}
+
+@function px2vh($px) {
+  $px_number: strip-unit($px);
+  @return $px_number / $layoutHeight * 1vh * 100;
+}
+
+@function px2vmin($px) {
+  $px_number: strip-unit($px);
+  @return $px_number / $layoutHeight * 1vmin * 100;
+}
+// 单行文本的溢出显示省略号
+// @param [$width] number 容器的宽度，必须
+@mixin text_overflow_single($width) {
+  width: $width;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+};
+
+// 多行文本溢出显示省略号
+// @param [$width] number 容器的宽度，必须
+// @param [$line] number 指定超出多少行显示省略号。默认是1行。
+@mixin text_overflow_multiple($width, $line: 1) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+  overflow: hidden;
+};
+
+// animate属性备忘
+@mixin animate($name, $start, $end, $time, $delay) {
+    // animation-name
+    // animation-duration
+    // animation-timing-function linear/ease/ease-in/ease-out/ease-in-out/cubic-bezier(n,n,n,n)
+    // animation-delay
+    // animation-fill-mode 属性规定动画在播放之前或之后，其动画效果是否可见。
+    //                      none |
+    //                      forwards (当动画完成后，保持最后一个属性值（在最后一个关键帧中定义）) |
+    //                      backwards(在 animation-delay 所指定的一段时间内，在动画显示之前，应用开始属性值（在第一个关键帧中定义）) |
+    //                      both    向前和向后填充模式都被应用。
+    // animation-iteration-count    infinite/具体次数
+    // animation-direction          normal(默认值。动画应该正常播放)/alternate(动画应该轮流反向播放)
+    // animation-play-state 属性规定动画正在运行还是暂停。注释：您可以在 JavaScript 中使用该属性，这样就能在播放过程中暂停动画。
+    animation: $name $time ease-in forwards;
+    @keyframes #{$name} {
+      0% {
+        opacity: $start;
+      }
+      100% {
+        opacity: $end;
+      }
+    }
+};
+
+@mixin flex-center(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+};
